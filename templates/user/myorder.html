@@ -1,0 +1,87 @@
+{% extends 'base.html'%}
+{% block content %}
+
+{% if not request.session.userid %}
+<script>alert('you have login first...');location.href="/user/signin/"</script>
+{% endif %}
+
+<div class="fs-2 text-center">Pending <b class="text-ocolor">Orders
+    <i class="fa-solid fa-cart-shopping fa-beat"></i>
+</b></div>
+
+<table class="table table-striped">
+    <tr>
+    <th>Order NO</th>
+    <th>Product Picture </th>
+    <th>Price</th>
+    <th>After Discount</th>
+    <th>size</th>
+    <th>color</th>
+    <th>Product Delivery</th>
+    <th>status</th>
+    <th>Order Date</th>
+    <th>Cancel</th>
+    </tr>
+    {% for i in pdata %}
+
+    <tr>
+        <td>{{i.11}}</td>
+        <td><img src="/{{i.7}}" style="max-height:150px;" class="img-thumbnail"/></td>
+        <td class="text-danger fw-bold">{{i.1}}</td>
+        <td class="text-succ fw-bold">{{i.2}}</td>
+        <td><span class="btn bg-ocolor">{{i.3}}</span></td>
+        <td><div style="height:40px;width:45px; border-radius:3px;background:{{i.4}}"></div></td>
+        <td>{{i.6}}</td>
+        <td>
+            <span class="btn btn-danger ">{{i.14}}</span>
+        </td>
+        <td>{{i.15}}</td>
+        <td><a href="/user/myorder?oid={{i.11}}" class="btn btn-sm btn-danger"> Cancel <i class="fa-solid fa-xmark"></i></a></td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+
+<div class="fs-2 text-center">Delivered <b class="text-ocolor">Orders
+    <i class="fa-solid fa-cart-shopping fa-beat"></i>
+</b></div>
+<!----start Delivered data--->
+
+<table class="table table-striped">
+    <tr>
+    <th>Order NO</th>
+    <th>Product Picture </th>
+    <th>Price</th>
+    <th>After Discount</th>
+    <th>size</th>
+    <th>color</th>
+    <th>Product Delivery</th>
+    <th>status</th>
+    <th>Order Date</th>
+
+    </tr>
+    {% for i in ddata %}
+
+    <tr>
+        <td>{{i.11}}</td>
+        <td><img src="/{{i.7}}" style="max-height:150px;" class="img-thumbnail"/></td>
+        <td class="text-danger fw-bold">{{i.1}}</td>
+        <td class="text-success fw-bold">{{i.2}}</td>
+        <td><span class="btn bg-ocolor">{{i.3}}</span></td>
+        <td><div style="height:40px;width:45px; border-radius:3px;background:{{i.4}}"></div></td>
+        <td>{{i.6}}</td>
+        <td>
+            <span class="btn btn-success ">{{i.14}}</span>
+        </td>
+        <td>{{i.15}}</td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+<!----end Delivered data--->
+
+{% endblock %}

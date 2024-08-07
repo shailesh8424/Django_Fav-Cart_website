@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+
+
+<div class="fs-1 text-center " xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"><b>Sign <span class="text-ocolor">Up <i class="fa-solid fa-user fa-beat"></i> </span></b>
+<p class="fs-5">if's free and only takes a minute.<p>
+    <hr>
+</div>
+
+ <!---start from---->
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row" style="background:url({% static 'images/white.jpg'%} )";>
+        <div class="container my-4" style ="width:600px;">
+<div class="row">
+<div class="col-sm-12 fs-1 text-center bg-info">
+    <b>Register <i class="fa-solid fa-user fa-flip"></i> </b>
+</div>
+<div class="col-sm-12 bg-ocolor" >
+<div class="input-group mt-4">
+<i class="input-group-text text-darks"><b>Name :</b></i>
+    <input type="text" name="name" required class="form-control fs-4">
+</div>
+
+<div class="input-group mt-4">
+<i class="input-group-text text-darks"><b>Email :</b></i>
+<input type="text" name="email" required class="form-control fs-4">
+</div>
+
+<div class="input-group mt-4">
+    <i class="input-group-text text-darks"><b>Mobile NO :</b></i>
+<input type="text" name="mob" required class="form-control fs-4">
+</div>
+
+
+<div class="input-group mt-4">
+    <i class="input-group-text text-darks"><b>Picture :</b></i>
+<input type="file" name="pic" required >
+</div>
+
+<div class="input-group mt-4">
+<i class="input-group-text text-darks"><b>Password :</b></i>
+<input type="Password" name="password" required class="form-control fs-4">
+</div>
+
+
+<div class="input-group mt-4">
+<i class="input-group-text text-darks"><b>Address : </b></i>
+    <textarea rows="3" name="msg"  required class="form-control fs-4"></textarea>
+</div>
+<input type="submit" class="bg-bcolor fs-3 fw-bold text-ocolor rounded-pill fs-1" style="margin:60px 200px;" value ="SUBMIT"/>
+</div>
+</div>
+</div>
+    </div>
+</form>
+
+        <!---end from---->
+
+
+
+{% endblock %}

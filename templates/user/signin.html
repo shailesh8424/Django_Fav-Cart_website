@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+<style>
+
+
+</style>
+
+<div class="fs-1 text-center "><b>Sign <span class="text-ocolor">In <i class="fa-solid fa-key  fa-flip"></i> </span></b>
+<p class="fs-5">if's free and only takes a minute.<p>
+    <hr>
+</div>
+
+<!------start from------>
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-sm-12 text-center fs-1 fw-bold bg-bcolor">LOGIN <b class="text-ocolor">NOW <i class="fa-solid fa-lock fa-shake"></i></b></div>
+    </div>
+    <div class="row ">
+    <div class="col-sm-3"></div>
+<div class="col-6 ht1 bg-light py-5 px-3  fs-5">
+<i class="fa-solid fa-envelope"></i> <input type="text" name="email" required placeholder= "Email" style="width:500px; height:50px; margin-bottom:20px; border:none;;"></input></br>
+<i class="fa-solid fa-lock"></i> <input type="Password" name="password" required placeholder= "Password" style="width:500px; height:50px; border:none;"></input></br></br>
+
+
+<input type="submit" class="bg-ocolor from-control rounded-3 text-light fw-bold fs-3 ms-5" style="width:400px;" value="SIGN IN "/></br></br>
+<i style="font-size:20px; padding-left:140px;">Forgot your password?</i></br>
+    <div style="padding-left:180px; color:black;">
+<a href="https://www.facebook.com/profile.php?id=100023910727328"> <i class="fa-brands fa-facebook  text-danger bg-light"></i></a>
+<a href="https://www.instagram.com/shaileshmaurya2/"> <i class="fa-brands fa-instagram  text-primary bg-light"></i></a>
+<a  href="https://www.youtube.com/channel/UCuR5eNze4aFHqWkn1yDBxCA"> <i class="fa-brands fa-youtube  text-warning  bg-light"></i></a>
+<a href ="https://twitter.com/"><i class="fa-brands fa-twitter  text-info bg-light"></i></a></div></br>
+    <div class="col-sm-3"></div>
+
+</div>
+
+
+</div>
+</form>
+
+<!------end from------>
+
+
+{% endblock %}

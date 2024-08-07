@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock  %}
+    </title>
+    <link href="{% static 'css/bootstrap.css'%}"rel="stylesheet"/>
+    <link href="{% static 'css/all.css'%}"rel="stylesheet"/>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js'%}"></script>
+
+    <style>
+        .bg-bcolor{
+        background:#444140;
+        }
+         .bg-ocolor{
+        background:#c6f03d;
+        }
+
+        .text-ocolor{
+        color:#c6f03d;
+        }
+        #menu ul li a{
+        color:white;
+        }
+        #menu ul li a:hover{
+            background:orange;
+            border-radius:5px;
+        }
+        .ufooter
+        {
+        min-height:300px;
+        border-bottom:1px solid white;
+        }
+
+        .bfooter
+        {
+        height:50px;
+        font-size:22px;
+        texr-align:center;
+        line-height:50px;
+        color:white;
+        }
+
+        .bfooter a
+        {
+        text-decoration:none;
+        }
+        .bfooter a:hover
+        {
+        color:white;
+        }
+        .w
+        {
+        background:url("{% static 'images/banner-2.jpg'%}");
+        background-size:100% 100%;
+        min-height:220px;
+        padding-top:100px;
+        }
+        .m
+        {
+        background:url("{% static 'images/banner-1.jpg'%}");
+        background-size:100% 100%;
+        min-height:220px;
+        padding-top:100px;
+        }
+        .k
+        {
+        background:url("{% static 'images/banner-3.jpg'%}");
+        background-size:100% 100%;
+        min-height:220px;
+        padding-top:100px;
+        }
+        .btn1
+        {
+        background:#00FFFF;
+        }
+        .product
+        {
+        min-height:500px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row bg-bcolor text-light text-center">
+        <div class="col-sm-4">
+            <i class="fa-solid fa-phone"></i> +91,8424845523
+        </div>
+        <div class="col-sm-4">
+            Welcome to Fav Cart India <i class="fa-solid fa-cart-arrow-down fa-beat "></i>
+        </div>
+        <div class="col-sm-4">
+            <a href="https://www.facebook.com/profile.php?id=100023910727328"> <i class="fa-brands fa-facebook text-info fa-beat"></i></a>
+           <a href="https://www.youtube.com/channel/UCuR5eNze4aFHqWkn1yDBxCA"> <i class="fa-brands fa-youtube text-danger fa-beat"></i></a>
+            <a href="https://twitter.com/"><i class="fa-brands fa-twitter text-info fa-beat"></i></a>
+            <a href="https://www.instagram.com/shaileshmaurya2/"><i class="fa-brands fa-instagram text-danger fa-beat"></i></a>
+
+        </div>
+    </div>
+
+    <div class="row header py-3 text-centers">
+        <div class="col-sm-4 fs-2 text-center">
+            FavCart <b class="text-ocolor">India
+            <i class="fa-solid fa-cart-arrow-down fa-beat "></i></b>
+        </div>
+        <div class="col-sm-4 pt-2 text-center" >
+            <div class="input-group"><input type="text" class="form-control" placeholder="search....">
+            <i class="input-group-text bg-ocolor text-light">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </i>
+            </div>
+        </div>
+        <div class="col-sm-4 text-center mt-2">
+            <a href="/user/showcart/" class="btn bg-ocolor">
+                Cart <i class="fa-solid fa-cart-arrow-down fa-bounce"></i>
+                <b class="badge bg-dark">
+                    {{cart}}
+                </b>
+            </a>
+            {% if request.session.userid %}
+            <b>{{request.session.userid}}</b>
+            <img src="/{{request.session.userpic}}" style="max-height:50px" class="img-thumbnail"/>
+            {% else %}
+            <b>Guest User</b>
+            <img src="{% static 'profile/default.png'%}" style="max-height:50px" class="img-thumbnail"/>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row menu bg-bcolor" style="min-height:45px">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <!-----start menu---->
+
+            <nav class="navbar navbar-expand-lg">
+  <div class="container-fluid" id="menu">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/user/index/"><i class="fa-solid fa-house"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/about/"><i class="fa-solid fa-circle-info"></i> About Us </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-brands fa-product-hunt "></i> Product
+          </a>
+          <ul class="dropdown-menu bg-bcolor">
+            <li><a class="dropdown-item" href="/user/mens/">Men's</a></li>
+            <li><a class="dropdown-item" href="/user/womens/">Women's</a></li>
+            <li><a class="dropdown-item" href="/user/kids/">kid's</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/myorder/"> <i class="fa-solid fa-cart-arrow-down"></i> My Orders</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="/user/enquiry/"> <i class="fa-solid fa-phone"></i> Enquiry</a>
+        </li>
+
+           <li class="nav-item">
+          <a class="nav-link" href="/user/signup/"> <i class="fa-solid fa-user"></i> Sign UP</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="/user/myprofile/"> <i class="fa-solid fa-circle-user"></i> My Profile</a>
+        </li>
+          {% if request.session.userid %}
+          <li class="nav-item">
+          <a class="nav-link" href="/user/signout/"> <i class="fa-solid fa-key"></i> Signout</a>
+        </li>
+          {% else %}
+
+           <li class="nav-item">
+          <a class="nav-link" href="/user/signin/"> <i class="fa-solid fa-key"></i> Sign In</a>
+        </li>
+          {% endif %}
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+            <!-----end menu---->
+        </div>
+        <div class="col-sm-2"></div>
+
+    </div>
+
+
+    <div class="row product">
+        <div class="col-sm-12 py-3">
+     {% block content %}
+
+            {% endblock %}
+        </div>
+
+    </div>
+    <div class="row bigsale"></div>
+    <div class="row message"></div>
+
+    <!-----start our service menu---->
+
+    <div class="row">
+        <div class="col-sm-12 fs-3 fw-bold text-center">OUR <b class="text-ocolor">SERVICES <i class="fa-solid fa-check"></i> </b>
+    </div>
+    </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 border ">
+                <div class="row">
+                    <div class="col-sm-3 text-ocolor"><i class="fa-solid fa-truck fa-2x"></i></div>
+                    <div class="col-sm-8">
+                        <b>FREE SHIPPING</b></br>
+                        for all order upto <i class="fa-solid fa-indian-rupee-sign"></i> 2000
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 border">
+                <div class="row">
+                    <div class="col-sm-3 text-ocolor"><i class="fa-solid fa-clock fa-2x"></i></div>
+                    <div class="col-sm-9">
+                        <b>DELIVER ON TIME</b></br>
+                        Fastest Delivery at doorstep
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 border">
+                <div class="row">
+                    <div class="col-sm-3 text-ocolor"><i class="fa-solid fa-lock fa-2x"></i></div>
+                    <div class="col-sm-9">
+                        <b>SECURE PAYMENT</b></br>
+                        100% secure payment
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    <hr>
+
+
+    <!-----end our service menu---->
+
+
+    <div class="row ufooter bg-bcolor border-1 text-ocolor">
+        <div class="col-sm-4 bg-bcolor pt-3">
+           <h3>Contact Address</h3>
+         <div class="fs-5 p-3  ">
+            <i class="fa-solid fa-house"></i> E-4/Vinya Khand-4,Gomati Nagar,Lucknow.Uttar Pradesh-226010.</br></br>
+             <a href="+91 8424845523" class="text-ocolor"><i class="fa-solid fa-phone "></i> +91,8424845523 </a></br>
+             <a href="mailto:Shaileshmaurya9004@gmail.com" class="text-ocolor"><i class="fa-solid fa-envelope"></i> shaileshmaurya9004@gmail.com</a>
+         </div>
+
+        </div>
+        <div class="col-sm-2 bg-bcolor pt-3 px-3 bfooter">
+            <h5>Information</h5>
+            <a href="/user/about" class="text-ocolor">About Us</a></br>
+            <a href="#" class="text-ocolor">Checkout</a></br>
+            <a href="#" class="text-ocolor">Contact</a></br>
+        </div>
+        <div class="col-sm-2 bg-bcolor pt-3 px-3 bfooter ">
+            <h5>My Account</h5>
+            <a href="/user/myprofile" class="text-ocolor">MyAccount</a></br>
+            <a href="/user/enquiry/" class="text-ocolor">Contact</a></br>
+            <a href="#" class="text-ocolor">Shopping Cart</a></br>
+        </div>
+
+
+
+        <div class="col-sm-4 bg-bcolor pt-3 text-ocolor">
+            <img src="{% static 'images/shailesh.png'%}" height="50px;"/>
+            <p> Welcome To The Shailesh Wold Online Shopping. </p>
+
+        </div>
+    </div>
+    <div class="row bfooter bg-bcolor">
+        <div class="col-sm-6">
+            Developed By : <a href="#" class="text-ocolor" >ʂɦɑɨƚɛʂɦ</a>
+
+        </div>
+        <div class="col-sm-6">
+            $Copyright to : <a href="https://www.instagram.com/shaileshmaurya2" target="_blank" class="text-ocolor">Shailesh Wold</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

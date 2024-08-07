@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<script src="{% static 'js/jquery-3.6.1.min.js'%}"></script>
+<script>
+    $(document).ready(function(){
+    $("#btne").click(function(){
+    $(".uform").slideToggle(4000)
+    })
+    })
+</script>
+
+{% if not request.session.userid %}
+
+<script>
+    alert('You have to login first...')
+    location.href="/user/signin/"
+</script>
+
+{% endif %}
+<div class="fs-2 text-center"> My <b class="text-ocolor">Profile
+    <i class="fa-solid fa-circle-user fa-beat"></i></b><br/><br/>
+</div>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="row">
+            <!-- start card -->
+            {% for x in mdata%}
+                <div class="card mb-3" w-100>
+  <div class="row g-0">
+    <div class="col-md-4 p-3">
+      <img src="/{{x.pic}}" style="min-height:200px;" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{x.name}}</h5>
+        <p class="card-text">
+            <b>Mobile :</b>{{x.mobile}}<br>
+            <b>Email :</b>{{x.email}}<br>
+            <b>Password :</b>{{x.passwd}}<br>
+            <b>Address :</b>{{x.address}}<br>
+        </p>
+        <a href="#" id="btne" class="btn bg-ocolor float-end">Edit Profile</a>
+      </div>
+    </div>
+  </div>
+</div>
+            {% endfor %}
+            <!-- end card -->
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+
+ <!---start from---->
+<style>
+    .uform{
+     tdisplay:none;
+    }
+
+</style>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="row">
+        <div class=" container my-4 uform " style ="width:600px;">
+<div class="row">
+<div class="col-sm-12 bg-ocolor" >
+<div class="input-group mt-4">
+<i class="input-group-text text-darks"><b>Name :</b></i>
+    <input type="text" name="name" required class="form-control fs-4">
+</div>
+
+<div class="input-group mt-4">
+    <i class="input-group-text text-darks"><b>Mobile NO :</b></i>
+<input type="text" name="mob" required class="form-control fs-4">
+</div>
+
+
+<div class="input-group mt-4">
+    <i class="input-group-text text-darks"><b>Picture :</b></i>
+<input type="file" name="pic" required >
+</div>
+
+<div class="input-group mt-4">
+<i class="input-group-text text-darks"><b>Password :</b></i>
+<input type="Password" name="password" required class="form-control fs-4">
+</div>
+
+
+<div class="input-group mt-4">
+<i class="input-group-text text-darks"><b>Address : </b></i>
+    <textarea rows="3" name="msg"  required class="form-control fs-4"></textarea>
+</div>
+<input type="submit" class="bg-bcolor fs-3 fw-bold text-ocolor rounded-pill fs-1" style="margin:60px 200px;" value ="SUBMIT"/>
+</div>
+</div>
+</div>
+    </div>
+</form>
+
+        <!---end from---->
+
+
+{% endblock %}

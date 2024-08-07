@@ -1,0 +1,82 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+<div class="fs-2 text-center">Men's <b class="text-ocolor">Product
+    <i class="fa-solid fa-cart-shopping fa-beat"></i>
+</b></div>
+<hr>
+
+<div class="row">
+    <div class="col-sm-9">
+        <div class="row">
+        <!-- start product-->
+        <!-- start product-->
+  {% for a in data %}
+    <div class="col-sm-3 my-2">
+
+        <div class="card bg-light">
+            <img src="/{{a.ppic}}" class="img-card-top"/>
+            <div class="card-body">
+                <h5 class="card-title">{{a.pcategory}}</h5>
+                <hr class="divider"/>
+                <B CLASS="btn btn-sm bg-ocolor">
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                </B>
+                <b class="text-danger fs-4"><s>{{a.pprice}}/-</s></b>
+                <b class="text-success fs-4">{{a.dprice}}/-</s></b><br/><br/>
+                <b class="btn btn-sm bg-ocolor">{{a.psize}}</b>
+                <div style="height:20px;width:20px;
+        background:{{a.pcolor}};border-radius:2px;" class="float-end"></div>
+                <hr class="divider"/>
+                <span class="text-muted fs-5">{{a.pdel}}</span><br/>
+                <a href="/user/viewproduct?abc={{a.id}}"
+                   class="btn btn-sm bg-ocolor">Order Now</a>
+                <a href="#" class="btn btn-sm bg-ocolor">Cart
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+                <span class="text-muted"><br/> <b>Date</b> :{{a.pdate}}
+
+        </span><br/>
+            </div>
+        </div>
+
+    </div>
+{% endfor %}
+    <!-- end product-->
+        <!-- end product-->
+            </div>
+
+    </div>
+    <div class="col-sm-3">
+        <ul class="list-group">
+            <li class="list-group-item fs-4 bg-bcolor text-light
+            fw-bold text-center">Product Category </li>
+       {% for x in cats %}
+            <li class="list-group-item">
+           <!-- start card -->
+           <div class="card w-100">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/{{x.CPic}}" style="max-height:70px" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+          <a href="/user/mens?msg={{x.id}}" class="text-dark"
+             style="text-decoration:none;">
+        <h5 class="card-title">{{x.Name}}</h5>
+              </a>
+         </div>
+    </div>
+  </div>
+</div>
+           <!-- end card -->
+
+
+       </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
